@@ -22,6 +22,7 @@
         Plugin 'Lokaltog/vim-easymotion'
         Plugin 'bling/vim-airline'
         Plugin 'embear/vim-localvimrc'
+        Plugin 'mileszs/ack.vim'
 	"---------------------------------------------
 	"| PLUGINS END HERE
 	"---------------------------------------------
@@ -49,8 +50,11 @@
 	"---------------------------------------------
 	"| CTRL-P
 	"---------------------------------------------
-    " remap ,O to call open CtrlP
-    nnoremap <leader>O :CtrlP<cr>
+    " remap Ctrl-O to call open CtrlP
+    nnoremap <C-O> :CtrlP<cr>
+    " remap exiting CtrlP to be Ctrl-w
+    let g:ctrlp_prompt_mappings = { 'PrtExit()': ['<C-w>'] }
+
     " mark root directories by making a temporary file .ctrlp
     let g:ctrlp_root_markers = ['.ctrlp']
     let g:ctrlp_by_filename = 1
@@ -70,6 +74,14 @@
 	"---------------------------------------------
     set laststatus=2
     
+	"---------------------------------------------
+	"| ACK
+	"---------------------------------------------
+    " remap Ctrl-F to start with :Ack -i (case-insensitive)
+    nnoremap <C-F> :Ack -i
+
+    " use the_silver_searcher to search instead of ack
+    let g:ackprg = 'ag --vimgrep'
 
 
 "---------------------------------------------
